@@ -1,0 +1,10 @@
+#!/bin/sh
+# Launcher for a source checkout. Uses the checkout's virtualenv if present, else the system
+# python3 (which then needs PySide6 from your distro).
+DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+if [ -x "$DIR/.venv/bin/python" ]; then PY="$DIR/.venv/bin/python"; else PY="${PYTHON:-python3}"; fi
+if ! "$PY" -c 'import PySide6.QtWidgets, PySide6.QtNetwork' 2>/dev/null; then
+  echo "school-schedule: PySide6 not found for $PY. Run ./install.sh (or ./install.sh --system)." >&2
+  exit 1
+fi
+PYTHONPATH="$DIR${PYTHONPATH:+:$PYTHONPATH}" exec "$PY" -m school_schedule "$@"

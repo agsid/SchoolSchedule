@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Name=School Schedule
+GenericName=Class Schedule
+Comment=Tray class schedule, live countdown and homework
+Exec=@EXEC@
+Icon=school-schedule
+Categories=Education;
+Keywords=school;schedule;class;homework;timetable;bell;
+Terminal=false
+StartupNotify=false
+StartupWMClass=school-schedule
+Actions=Toggle;Settings;
+
+[Desktop Action Toggle]
+Name=Toggle panel
+Exec=@EXEC@ --toggle
+
+[Desktop Action Settings]
+Name=Settings
+Exec=@EXEC@ --settings

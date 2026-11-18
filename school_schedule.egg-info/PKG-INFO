@@ -1,0 +1,36 @@
+Metadata-Version: 2.4
+Name: school-schedule
+Version: 1.0.0
+Summary: Tray class schedule, live countdown and homework for Linux (Hyprland, Sway, KDE, GNOME, X11)
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: PySide6-Essentials>=6.6
+
+# School Schedule (Linux)
+
+A Linux re-creation of the macOS menu-bar app *School Schedule 1.0*, rebuilt from the
+behaviour visible in its binary (the original source was not available).
+
+Lives in the **system tray**. Click the icon for a panel showing the current class, a live
+countdown, today's periods, after-school events and homework.
+
+## Features
+- Bell schedules: regular / short / advisory, with day-type picked automatically
+- Rotation days (A/B, 6-day drop, etc.) anchored to a date, skipping weekends and days off
+- Days off / breaks, last day of school, optional lunch waves
+- Classes with colours and a per-rotation-day plan grid; 3 starter templates
+- Homework (due "next class", tomorrow or a date), weekly after-school events
+- Notifications: class-start, morning summary, evening homework (via `notify-send`)
+- Tray icon shows minutes left; themes + custom accent; launch at login (XDG autostart)
+- Data in `~/.config/school-schedule/data.json` (export/import in Settings)
+
+## Run
+    ./install.sh
+    school-schedule              # start (or show the panel if already running)
+    school-schedule --toggle     # toggle panel   (bind this to a key)
+    school-schedule --settings | --show | --quit
+
+### Hyprland / Wayland
+Wayland apps can't place themselves, so the panel is moved to the top-right by default; add
+a rule if you want it elsewhere, e.g. `windowrulev2 = float, title:^(School Schedule)$`, and
+bind `school-schedule --toggle`. Waybar needs its `tray` module for the icon.

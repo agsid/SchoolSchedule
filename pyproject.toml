@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "school-schedule"
+version = "1.0.0"
+description = "Tray class schedule, live countdown and homework for Linux (Hyprland, Sway, KDE, GNOME, X11)"
+requires-python = ">=3.9"
+dependencies = ["PySide6-Essentials>=6.6"]
+readme = "README.md"
+
+[project.scripts]
+school-schedule = "school_schedule.main:main"
+
+[tool.setuptools]
+packages = ["school_schedule"]
+
+[tool.setuptools.package-data]
+school_schedule = ["assets/*.svg"]
